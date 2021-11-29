@@ -1,5 +1,5 @@
 {
-    "mongoURI": "mongodb://mern123:mern123@atlas-w2zbss-shard-00-00.d6clt.mongodb.net:27017,atlas-w2zbss-shard-00-01.d6clt.mongodb.net:27017,atlas-w2zbss-shard-00-02.d6clt.mongodb.net:27017/devconnector?ssl=true&replicaSet=atlas-w2zbss-shard-0&authSource=admin&retryWrites=true",
+    "mongoURI": "mongodb://mern123:mern123@atlas-w2zbss-shard-00-00.d6clt.mongodb.net:27017,atlas-w2zbss-shard-00-01.d6clt.mongodb.net:27017,atlas-w2zbss-shard-00-02.d6clt.mongodb.net:27017/devgram?ssl=true&replicaSet=atlas-w2zbss-shard-0&authSource=admin&retryWrites=true",
     "jwtSecret": "mysecrettoken",
     "githubClientId": "d880e6ab5b1a0f500e9b",
     "githubSecret": "49d79e01f78597e6bd70ade82eec0a2169e1d43c"
