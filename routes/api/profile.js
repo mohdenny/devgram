@@ -262,30 +262,20 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
 // @access   Public
 router.get('/github/:username', async (req, res) => {
   try {
-      const options = {
-        uri: `https://api.github.com/users/${
-            req.params.username
-        }/repos?per_page=5&
-        sort=Created:asc&client_id=${config.get(
-            'githubClientId'
-        )}&client_secret=${config.get('githubSecret')}`,
-        method: 'GET',
-        headers: { 'user-agent': 'node.js' }
-      };
+    const uri = encodeURI(
+      `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
+    );
+    const headers = {
+      'user-agent': 'node.js',
+      Authorization: `client_id ${config.get('githubClientId')}, client_secret ${config.get('githubToken')}`
+    };
 
-      request(options, (error, response, body) => {
-        if(error) console.error(error);
-
-        if(response.statusCode !== 200) {
-            return res.status(400).json({ msg: 'No Github profile found' })
-        }
-
-        res.json(JSON.parse(body));
-      })
+    const gitHubResponse = await axios.get(uri, { headers });
+    return res.json(gitHubResponse.data);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    return res.status(404).json({ msg: 'No Github profile found' });
   }
-})
+});
 
 module.exports = router;
